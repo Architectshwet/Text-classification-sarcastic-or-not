@@ -78,16 +78,16 @@ A user defined function vec2clean.corp is created to do preprocessing and cleani
 takes in a vector with all the tweets in it and convert it to a corpus and cleans it.
 The following steps are done on the corpus: 
 
-1. CASE FOLDING
+1. Case folding
 
 The first preprocessing step is Case folding. Here, we are converting all the letters in the Corpus to lowercase
 using R’s base function tolower.
 
-2. REMOVING NUMBERS
+2. Removing numbers
 
 In this step, we are freeing corpus from numbers. Here, we use tm’s removeNumbers function.
 
-3. REMOVE STOPWORDS
+3. Remove stopwords
 
 This is very interesting preprocessing step. This step is about eliminating words that doesn’t make any meaning.
 Usually, stopwords of English would be enough, but in our case, we have tweets in different language. We
@@ -98,7 +98,7 @@ stopwords(‘en’) provide.
 Coming to user defined stopwords, we have few frequent words which can be considered. We are going to
 deal this in feature engineering with more analysis on them.
 
-4. USER DEFINED FUNCTIONS
+4. User defined functions
 
 While checking data for initial insights, there are few tweets which contain apostrophes in them. If we
 remove them with other punctuation, it is merging two different words to one and causing ambiguity. Also, we
@@ -107,19 +107,19 @@ So, we should take care to avoid this situation. I have wrote a user defined fun
 which takes corpus as argument and checks for ‘single’, ‘double’ quotes and control flow words ‘break’ and
 replace them to a space and returns clean corpus.
 
-5. REMOVING PUNCTUATION MARKS
+5. Removing punctuation marks
 
 We have use tm’s removePunctuation function to remove all punctuation marks such as comma, full stop,
 parenthesis, various brackets etc.., from the corpus.
 
-6. STEMMING
+6. Stemming
 
 For grammatical reasons, document contains different inflectional forms like tense forms and derivational
 forms, we are performing stemming to reduce all those words to their root word. We are using tm’s
 stemDocument function to do this. Stemming greatly help in reducing total number of terms and increase
 weighting.
 
-7. STRIPING WHITESPACES
+7. Striping whitespaces
 
 The above performed preprocessing steps left our corpus with many leading and trailing whitespaces within
 documents. We are cleaning all of them in one go using tm’s stripWhitespace function. With this step our basic
